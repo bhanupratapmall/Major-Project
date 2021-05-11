@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <title>MAJOR PROJECT UI</title>
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <!-- build:css css/main.css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css"> -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- endbuild-->
+    <script >
+        function calculate()
+{
+    console.log("function called");
+ba=document.getElementById("BisphenolA").value;
+dgeba=document.getElementById("dgeba").value;
+kat=document.getElementById("kat").value;
+time=document.getElementById("time").value;
+temp=document.getElementById("temperature").value;
+wpe828=document.getElementById("wpe828").value;
+ba=(ba-107)/19;
+dgeba=(dgeba-394)/66;
+kat=(kat-.33)/0.07;
+temp=(temp-165)/30;
+time=(time-120)/24;
+wpe828=(wpe828-192)/2;
+
+wpe1=474.204+76.762*ba-76.027*dgeba+7.824*kat;
+wpe2=6.585*temp+8.242*time+7.183*wpe828-40.756*ba*dgeba;
+wpe3=11.532*ba*kat-10.235*dgeba*kat;
+wpe4=10.235*dgeba*dgeba-25.530*temp*temp-18.787*time*time;
+wpe=wpe1+wpe2+wpe3+wpe4;
+document.getElementById("result").innerHTML=wpe;
+}
+    </script>
+    </head>
+    <BODY>
+        <header class="jumbotron">
+            <div class="container">
+                <div class="row row-header">
+                    <div class="col-12 col-sm-6">
+                        <h1>Epoxy resin WPE prediction</h1>
+                        <p>Modelling and simulation of batch reaction production of epoxy resin using Machine learning model</p>
+                    </div>
+                    <div class="col-12 col-sm-2"></div>
+                    <div class="col-12 col-sm">
+                        <img src="logo.png" class="img-fluid" height="150" width="150">
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+<!--             <div class="col-12 col-md">
+                <p >The WPE number is:<br>
+                    <span id="result"></span>
+                
+                </p>
+           </div> -->
+           <div class="row-content col-md-10">
+            <img src="team.png" >
+        </div>
+            <div class="row row-content align-items-center">
+                <div class="col-12">
+                   <h3>Enter the desired values</h3>
+                </div>
+                
+                 <div class="col-12 col-md-10">
+                     <form >
+                         <div class="form-group row">
+                             <label for="BisphenolA" class="col-md-2 col-form-label">BisphenolA</label>
+                             <div class="col-5 col-md-3">
+                                 <input type="number" class="form-control" id="BisphenolA" name="BisphenolA" placeholder="BisphenolA amount">
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="dgeba" class="col-md-2 col-form-label">DGEBA</label>
+                             <div class="col-md-3">
+                                 <input type="number" class="form-control" id="dgeba" name="dgeba" placeholder="DGEBA Amount">
+                             </div>
+     
+                         </div>
+                         <div class="form-group row">
+                             <label for="kat" class="col-12 col-md-2 col-form-label">Catalyst Amount</label>
+                             <div class="col-5 col-md-3">
+                                 <input type="number" class="form-control" id="kat" name="kat" placeholder="Catalyst amount">
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="time" class="col-md-2 col-form-label">Time</label>
+                             <div class="col-md-3">
+                                 <input type="number" class="form-control" id="time" name="time" placeholder="Time">
+                             </div>
+     
+                         </div>
+                         
+                         <div class="form-group row">
+                             <label for="temperature" class="col-md-2 col-form-label">Temperature</label>
+                             <div class="col-md-3">
+                                <input type="number" class="form-control" id="temperature" name="temperature" placeholder="Temperature">
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                            <label for="wpe828" class="col-md-2 col-form-label">WPE_828 value</label>
+                            <div class="col-md-3">
+                               <input type="number" class="form-control" id="wpe828" name="wpe828" placeholder="WPE_828 Value">
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                             <div class="offset-md-2 col-md-3">
+                                 <button type="button" class="btn btn-primary" onclick="calculate()">Calculate WPE</button>
+                                    
+                             </div>
+                         </div>
+                         
+                     </form>
+                 </div>
+                 
+                  
+            </div>
+            <div class="row-content">
+                <h3>The WPE number of Epoxy resin is: <span id="result"></span></h3>
+                
+            </div>
+            
+        </div>
+
+
+        
+    </BODY>
+</html>
