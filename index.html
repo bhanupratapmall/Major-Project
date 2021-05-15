@@ -36,7 +36,7 @@ wpe2=6.585*temp+8.242*time+7.183*wpe828-40.756*ba*dgeba;
 wpe3=11.532*ba*kat-10.235*dgeba*kat;
 wpe4=10.235*dgeba*dgeba-25.530*temp*temp-18.787*time*time;
 wpe=wpe1+wpe2+wpe3+wpe4;
-document.getElementById("result").innerHTML=wpe;
+document.getElementById("result").innerHTML=Math.floor(wpe);
 }
     </script>
     </head>
@@ -46,7 +46,8 @@ document.getElementById("result").innerHTML=wpe;
                 <div class="row row-header">
                     <div class="col-12 col-sm-6">
                         <h1>Epoxy resin WPE prediction</h1>
-                        <p>Modelling and simulation of batch reaction production of epoxy resin using Machine learning model</p>
+                        <p>Modelling and simulation of batch reaction production of epoxy resin using Machine learning model</p><br>
+                        <p style="font-style: italic;">Guided by: Dr. Aparna K.<br>Associate Professor<br>Department of Chemical Engineering<br>National Institute of Technology Calicut</p>
                     </div>
                     <div class="col-12 col-sm-2"></div>
                     <div class="col-12 col-sm">
@@ -56,15 +57,6 @@ document.getElementById("result").innerHTML=wpe;
             </div>
         </header>
         <div class="container">
-<!--             <div class="col-12 col-md">
-                <p >The WPE number is:<br>
-                    <span id="result"></span>
-                
-                </p>
-           </div> -->
-           <div class="row-content col-md-10">
-            <img src="team.png" >
-        </div>
             <div class="row row-content align-items-center">
                 <div class="col-12">
                    <h3>Enter the desired values</h3>
@@ -74,50 +66,49 @@ document.getElementById("result").innerHTML=wpe;
                      <form >
                          <div class="form-group row">
                              <label for="BisphenolA" class="col-md-2 col-form-label">BisphenolA</label>
-                             <div class="col-5 col-md-3">
-                                 <input type="number" class="form-control" id="BisphenolA" name="BisphenolA" placeholder="BisphenolA amount">
+                             <div class="col-5 col-md-5">
+                                 <input type="number" class="form-control" id="BisphenolA" name="BisphenolA" placeholder="BisphenolA amount [96-118]" required min="96" max="118">
                              </div>
                          </div>
                          <div class="form-group row">
                              <label for="dgeba" class="col-md-2 col-form-label">DGEBA</label>
-                             <div class="col-md-3">
-                                 <input type="number" class="form-control" id="dgeba" name="dgeba" placeholder="DGEBA Amount">
+                             <div class="col-md-5">
+                                 <input type="number" class="form-control" id="dgeba" name="dgeba" placeholder="DGEBA Amount [355-433]" required min="355" max="433">
                              </div>
      
                          </div>
                          <div class="form-group row">
                              <label for="kat" class="col-12 col-md-2 col-form-label">Catalyst Amount</label>
-                             <div class="col-5 col-md-3">
-                                 <input type="number" class="form-control" id="kat" name="kat" placeholder="Catalyst amount">
+                             <div class="col-5 col-md-5">
+                                 <input type="number" class="form-control" id="kat" name="kat" placeholder="Catalyst amount [0.29-0.37]" required min="0.29" max="0.37">
                              </div>
                          </div>
                          <div class="form-group row">
                              <label for="time" class="col-md-2 col-form-label">Time</label>
-                             <div class="col-md-3">
-                                 <input type="number" class="form-control" id="time" name="time" placeholder="Time">
+                             <div class="col-md-5">
+                                 <input type="number" class="form-control" id="time" name="time" placeholder="Time [108-132]" required min="108" max="132">
                              </div>
      
                          </div>
                          
                          <div class="form-group row">
                              <label for="temperature" class="col-md-2 col-form-label">Temperature</label>
-                             <div class="col-md-3">
-                                <input type="number" class="form-control" id="temperature" name="temperature" placeholder="Temperature">
+                             <div class="col-md-5">
+                                <input type="number" class="form-control" id="temperature" name="temperature" placeholder="Temperature [150-180]" required min="150" max="180">
                              </div>
                          </div>
                          <div class="form-group row">
                             <label for="wpe828" class="col-md-2 col-form-label">WPE_828 value</label>
-                            <div class="col-md-3">
-                               <input type="number" class="form-control" id="wpe828" name="wpe828" placeholder="WPE_828 Value">
+                            <div class="col-md-5">
+                               <input type="number" class="form-control" id="wpe828" name="wpe828" placeholder="WPE_828 Value [190-194]" required min="190" max="194">
                             </div>
                         </div>
                          <div class="form-group row">
                              <div class="offset-md-2 col-md-3">
                                  <button type="button" class="btn btn-primary" onclick="calculate()">Calculate WPE</button>
-                                    
+                                <button type="reset" class="btn btn-success">Reset</button>
                              </div>
-                         </div>
-                         
+                        </div>    
                      </form>
                  </div>
                  
@@ -129,8 +120,63 @@ document.getElementById("result").innerHTML=wpe;
             </div>
             
         </div>
-
-
+        <div class="container">
+            <div class="row-content">
+                <h3 class="col" style="text-align: center;">
+                    Graphical Trend
+                </h3>
+                <div class="col" >
+                    <div class="carousel slide" data-ride="carousel" id="mycarousel">
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active">
+                                <img class="d-block img-fluid" src="ba.png" alt="BA" width="60%" height=60%>
+                            </div>
+                            <div class="carousel-item ">
+                                <img class="d-block img-fluid" src="dgeba.png" alt="DGEBA" width="60%" height="60%">
+                                
+                            </div>
+                            <div class="carousel-item ">
+                                <img class="d-block img-fluid" src="temp.png" alt="Temperature" width="60%" height="60%">
+                                
+                            </div>
+                            <div class="carousel-item ">
+                                <img class="d-block img-fluid" src="time.png" alt="Time" width="60%" height="60%">
+                                
+                            </div>
+                            <div class="carousel-item ">
+                                <img class="d-block img-fluid" src="kat.png" alt="Catalyst" width="60%" height="60%">
+                                
+                            </div>
+                        </div>
+                        <ol class="carousel-indicators">
+                            <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#mycarousel" data-slide-to="1" ></li>
+                            <li data-target="#mycarousel" data-slide-to="2" ></li>
+                            <li data-target="#mycarousel" data-slide-to="3" ></li>
+                            <li data-target="#mycarousel" data-slide-to="4" ></li>
+                        </ol>
+                        <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </a>
+                        
+                        <button class="btn btn-danger btn-sm" id="carouselButton">
+                            <span class="fa fa-pause"></span>
+                        </button>
+                            
+                    </div>
+                </div>
+    
+            </div>
+            <div class="row-content col-md-10">
+                <img src="team.png" >
+            </div>
+        </div>
+    <script src="jquery.slim.min.js"></script>
+     <script src="popper.min.js"></script>
+     <script src="bootstrap.min.js"></script>
         
     </BODY>
 </html>
